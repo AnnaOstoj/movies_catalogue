@@ -10,8 +10,13 @@
     <div class="row">
             {% for list in lists %}
             <div class="col-lg-3 mb-4">
-                <a href="{{ url_for('homepage', list_type=list) }}" class="btn btn-outline-info active" aria-pressed="true">{{ list.capitalize()|replace("_", " ") }}</a>
-            </div>
+                {% if active == list %}
+                    <a href="{{ url_for('homepage', list_type=list) }}" class="btn btn-outline-info active" aria-pressed="true">
+                        {{ list.capitalize()|replace("_", " ") }}</a>
+                {% else %}
+                    <a href="{{ url_for('homepage', list_type=list) }}" class="btn btn-outline-info">{{ list.capitalize()|replace("_", " ") }}</a>
+                {% endif %}
+             </div>
             {% endfor %}
     </div>
 </div>
