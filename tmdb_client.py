@@ -59,3 +59,19 @@ def get_single_movie_images(movie_id):
     }
     r = requests.get(url, headers=headers)
     return r.json()["backdrops"]
+
+def search_movie(search_query):
+    url = f"https://api.themoviedb.org/3/search/movie/?query={search_query}"
+    headers = {
+        "Authorization": f"Bearer {API_TOKEN}"
+    }
+    r = requests.get(url, headers=headers)
+    return r.json()
+
+def get_airing_today():
+    url = f"https://api.themoviedb.org/3/tv/airing_today"
+    headers = {
+        "Authorization": f"Bearer {API_TOKEN}"
+    }
+    r = requests.get(url, headers=headers)
+    return r.json()
