@@ -35,6 +35,7 @@ def movie_details(movie_id):
     movie = tc.get_single_movie(movie_id)
     cast = tc.get_single_movie_cast(movie_id)[:8]
     images = tc.get_single_movie_images(movie_id)
+    print(cast)
     random_image = sample(images, 1)
     image_url = random_image[0]['file_path']
     return render_template("movie_details.html", movie=movie, cast=cast, image_url=image_url)
