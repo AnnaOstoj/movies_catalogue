@@ -42,10 +42,10 @@ def get_single_movie(movie_id):
     return call_tmdb_api(f"movie/{movie_id}")
 
 def get_single_movie_cast(movie_id):
-    return call_tmdb_api(f"movie/{movie_id}/credits")["cast"]
+    return call_tmdb_api(f"movie/{movie_id}/credits")
 
 def get_single_movie_images(movie_id):
-    return call_tmdb_api(f"movie/{movie_id}/images")["backdrops"]
+    return call_tmdb_api(f"movie/{movie_id}/images")
 
 def search_movie(search_query):
     return call_tmdb_api(f"search/movie/?query={search_query}")

@@ -33,8 +33,8 @@ def homepage():
 @app.route('/movie/<movie_id>')
 def movie_details(movie_id):
     movie = tc.get_single_movie(movie_id)
-    cast = tc.get_single_movie_cast(movie_id)[:8]
-    images = tc.get_single_movie_images(movie_id)
+    cast = tc.get_single_movie_cast(movie_id)["cast"][:8]
+    images = tc.get_single_movie_images(movie_id)["backdrops"]
     print(cast)
     random_image = sample(images, 1)
     image_url = random_image[0]['file_path']
