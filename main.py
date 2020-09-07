@@ -25,17 +25,17 @@ def homepage():
             return redirect(url_for('show_favorites'))
         else:
             movies = tc.get_movies(how_many=8, list_type=data)
+            print(movies)
             return render_template("homepage.html", movies=movies, current_list=movies, lists=movies_list, active = data)
     else:
         movies = tc.get_movies(how_many=8, list_type="popular")
         return render_template("homepage.html", movies=movies, current_list=movies, lists=movies_list)
 
-@app.route('/movie/<movie_id>')
+@app.route('/movie/<int:movie_id>')
 def movie_details(movie_id):
     movie = tc.get_single_movie(movie_id)
     cast = tc.get_single_movie_cast(movie_id)["cast"][:8]
     images = tc.get_single_movie_images(movie_id)["backdrops"]
-    print(cast)
     random_image = sample(images, 1)
     image_url = random_image[0]['file_path']
     return render_template("movie_details.html", movie=movie, cast=cast, image_url=image_url)
