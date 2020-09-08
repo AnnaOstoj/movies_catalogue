@@ -58,7 +58,7 @@ def test_get_single_movie_title(monkeypatch):
     response = my_mock.return_value
     response.json.return_value = mock_movie_title
     monkeypatch.setattr("tmdb_client.requests.get", my_mock)
-    movie = tc.get_single_movie(movie_id = '671')
+    movie = tc.call_tmdb_api("movie/671")
 
     assert movie['title'] == mock_movie_title['title']
 
@@ -76,7 +76,7 @@ def test_get_single_movie_images(monkeypatch):
     response.json.return_value= mock_movie_image_file_path
     monkeypatch.setattr("tmdb_client.requests.get", my_mock)
     
-    movie_images = tc.get_single_movie_images(movie_id = 671)
+    movie_images = tc.call_tmdb_api("movie/671/images")
 
     assert movie_images['file_path'] == mock_movie_image_file_path['file_path']
 
@@ -89,7 +89,7 @@ def test_get_single_movie_cast(monkeypatch):
     response.json.return_value = mock_movie_actor
     monkeypatch.setattr("tmdb_client.requests.get", my_mock)
     
-    movie_cast = tc.get_single_movie_cast(movie_id = 671)
+    movie_cast = tc.call_tmdb_api("movie/671/credits")
 
     assert movie_cast['name'] == mock_movie_actor['name']
 
