@@ -25,7 +25,6 @@ def homepage():
             return redirect(url_for('show_favorites'))
         else:
             movies = tc.get_movies(how_many=8, list_type=data)
-            print(movies)
             return render_template("homepage.html", movies=movies, current_list=movies, lists=movies_list, active = data)
     else:
         movies = tc.get_movies(how_many=8, list_type="popular")
